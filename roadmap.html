@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografis: Peta Jalan Menjadi Backend Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F0F4F8;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        .flowchart-step {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .flowchart-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .flowchart-arrow {
+            font-size: 2.5rem;
+            line-height: 1;
+            color: #4A5568;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        h2 {
+            font-size: 1.875rem;
+            font-weight: 800;
+            color: #1A202C;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #2D3748;
+            margin-bottom: 1rem;
+        }
+        .stat-card {
+            background-color: #FF6B6B;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="text-gray-700">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-gray-800">
+                <span class="text-[#4D96FF]">Backend</span> Roadmap
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#pendahuluan" class="text-gray-600 hover:text-[#4D96FF] transition">Pendahuluan</a>
+                <a href="#pondasi" class="text-gray-600 hover:text-[#4D96FF] transition">Pondasi</a>
+                <a href="#data" class="text-gray-600 hover:text-[#4D96FF] transition">Data</a>
+                <a href="#api" class="text-gray-600 hover:text-[#4D96FF] transition">API</a>
+                <a href="#lingkungan" class="text-gray-600 hover:text-[#4D96FF] transition">Lingkungan</a>
+                <a href="#praktik" class="text-gray-600 hover:text-[#4D96FF] transition">Praktik</a>
+                <a href="#roadmap-visual" class="text-gray-600 hover:text-[#4D96FF] transition">Roadmap</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="pendahuluan" class="text-center py-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-[#1A202C] mb-4">Peta Jalan Menjadi Backend Developer Andal</h1>
+            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+                Sebuah panduan visual yang disederhanakan untuk memahami dunia pengembangan backend, dari pondasi hingga menjadi seorang ahli di industri digital.
+            </p>
+        </section>
+
+        <section id="pondasi" class="py-12">
+            <h2><span class="text-[#FF6B6B]">Pondasi Teknis:</span> Bahasa & Framework</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="card">
+                    <h3>Popularitas Bahasa Pemrograman Backend</h3>
+                    <p class="mb-4 text-gray-600">Memilih bahasa yang tepat adalah langkah pertama. Python dan JavaScript (Node.js) mendominasi karena kemudahan dan fleksibilitasnya, sementara Java tetap menjadi andalan untuk aplikasi skala besar (enterprise).</p>
+                    <div class="chart-container h-72 md:h-80">
+                        <canvas id="languagesChart"></canvas>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Framework Backend Paling Diminati</h3>
+                    <p class="mb-4 text-gray-600">Framework mempercepat pengembangan dengan menyediakan struktur siap pakai. Express.js untuk Node.js dan Django untuk Python adalah pilihan populer untuk membangun aplikasi dengan cepat dan efisien.</p>
+                    <div class="chart-container h-72 md:h-80">
+                        <canvas id="frameworksChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="data" class="py-12 bg-gray-50 rounded-xl">
+            <h2><span class="text-[#4ECDC4]">Pilar Data:</span> SQL vs NoSQL</h2>
+            <div class="max-w-4xl mx-auto text-center mb-8">
+                <p class="text-lg text-gray-600">Setiap aplikasi membutuhkan tempat penyimpanan data. Memahami perbedaan antara database SQL yang terstruktur dan NoSQL yang fleksibel adalah kunci untuk membangun sistem yang efisien.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="card border-l-4 border-[#4D96FF]">
+                    <h3 class="text-[#4D96FF]">Database SQL (Relasional)</h3>
+                    <p class="mb-2"><strong>Analogi:</strong> Lemari arsip dengan laci berlabel rapi.</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-600">
+                        <li><strong>Struktur:</strong> Data disimpan dalam tabel dengan skema yang kaku (seperti spreadsheet).</li>
+                        <li><strong>Kapan Digunakan:</strong> Cocok untuk aplikasi keuangan, e-commerce, atau sistem yang membutuhkan konsistensi data tinggi.</li>
+                        <li><strong>Contoh Populer:</strong> MySQL, PostgreSQL.</li>
+                    </ul>
+                </div>
+                <div class="card border-l-4 border-[#FF6B6B]">
+                    <h3 class="text-[#FF6B6B]">Database NoSQL (Non-Relasional)</h3>
+                    <p class="mb-2"><strong>Analogi:</strong> Kotak penyimpanan serbaguna untuk berbagai jenis barang.</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-600">
+                        <li><strong>Struktur:</strong> Sangat fleksibel; bisa menyimpan dokumen, key-value, dll.</li>
+                        <li><strong>Kapan Digunakan:</strong> Ideal untuk big data, aplikasi media sosial, atau proyek yang membutuhkan skalabilitas dan kecepatan tinggi.</li>
+                        <li><strong>Contoh Populer:</strong> MongoDB, Redis.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="api" class="py-12">
+            <h2><span class="text-[#556270]">Jembatan Komunikasi:</span> API</h2>
+             <div class="max-w-4xl mx-auto text-center mb-8">
+                <p class="text-lg text-gray-600">API (Application Programming Interface) adalah 'pelayan' yang menghubungkan frontend (tampilan pengguna) dengan backend (logika server). REST dan GraphQL adalah dua pendekatan populer.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="card text-center">
+                     <div class="text-5xl mb-4">🍽️</div>
+                    <h3 class="text-[#4D96FF]">REST API</h3>
+                    <p class="text-gray-600">Seperti memesan dari menu yang sudah ditentukan. Anda meminta 'paket' data tertentu (misal: info produk), dan server mengirimkan semua info dalam paket tersebut.</p>
+                </div>
+                 <div class="card text-center">
+                    <div class="text-5xl mb-4">🛒</div>
+                    <h3 class="text-[#FF6B6B]">GraphQL</h3>
+                    <p class="text-gray-600">Seperti membuat daftar belanja sendiri. Anda hanya meminta data yang spesifik Anda butuhkan, tidak lebih, tidak kurang. Sangat efisien!</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="lingkungan" class="py-12 bg-gray-50 rounded-xl">
+             <h2><span class="text-[#4ECDC4]">Lingkungan Aplikasi:</span> Cloud, Docker, & Kubernetes</h2>
+             <div class="grid md:grid-cols-3 gap-8 text-center max-w-6xl mx-auto">
+                <div class="card">
+                    <div class="text-5xl mb-4">☁️</div>
+                    <h3>Cloud Computing</h3>
+                    <p>Menyewa komputer (server) dari penyedia seperti AWS, Azure, atau GCP. Anda tidak perlu membeli dan merawat server fisik sendiri.</p>
+                </div>
+                <div class="card">
+                     <div class="text-5xl mb-4">📦</div>
+                    <h3>Docker (Container)</h3>
+                    <p>Membungkus aplikasi dan semua kebutuhannya ke dalam sebuah 'kotak' (container). Ini memastikan aplikasi berjalan sama di mana pun.</p>
+                </div>
+                <div class="card">
+                     <div class="text-5xl mb-4">🚢</div>
+                    <h3>Kubernetes</h3>
+                    <p>Seorang 'kapten kapal' yang mengelola banyak 'kotak' Docker. Ini mengotomatiskan deployment, penskalaan, dan manajemen aplikasi.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="praktik" class="py-12">
+            <h2><span class="text-[#FF6B6B]">Praktik Pengembangan</span> Modern</h2>
+             <div class="grid md:grid-cols-3 gap-8 text-center max-w-6xl mx-auto">
+                <div class="card">
+                    <div class="text-5xl mb-4">📚</div>
+                    <h3>Git (Kontrol Versi)</h3>
+                    <p>Seperti 'mesin waktu' untuk kode Anda. Git memungkinkan Anda melacak setiap perubahan, kembali ke versi sebelumnya, dan bekerja sama dengan tim tanpa kekacauan.</p>
+                </div>
+                <div class="card">
+                     <div class="text-5xl mb-4">🚀</div>
+                    <h3>CI/CD</h3>
+                    <p>Sebuah 'pabrik perakitan' otomatis. Setiap kali Anda mengubah kode, CI/CD akan otomatis menguji dan mengirimkannya ke pengguna, membuat proses rilis lebih cepat dan aman.</p>
+                </div>
+                <div class="card">
+                     <div class="text-5xl mb-4">💡</div>
+                    <h3>Keterampilan Non-Teknis</h3>
+                    <p>Kemampuan memecahkan masalah, berkomunikasi dengan jelas, dan bekerja dalam tim sama pentingnya dengan kemampuan teknis untuk menjadi developer yang sukses.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="roadmap-visual" class="py-16">
+            <h2><span class="text-[#4D96FF]">Roadmap Visual</span> untuk Pemula</h2>
+             <div class="max-w-4xl mx-auto text-center mb-12">
+                <p class="text-lg text-gray-600">Ikuti langkah-langkah ini secara berurutan untuk membangun fondasi yang kuat dan menjadi backend developer yang siap kerja.</p>
+            </div>
+            <div class="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-4">
+                <div class="flowchart-step card text-center w-64">
+                    <div class="text-4xl font-bold text-[#4D96FF] mb-2">1</div>
+                    <h4 class="font-semibold text-lg">Pilih Bahasa</h4>
+                    <p class="text-sm text-gray-500">Mulai dengan Python atau JavaScript (Node.js).</p>
+                </div>
+                <div class="flowchart-arrow hidden md:block">➔</div>
+                <div class="flowchart-step card text-center w-64">
+                    <div class="text-4xl font-bold text-[#FF6B6B] mb-2">2</div>
+                    <h4 class="font-semibold text-lg">Pelajari Database</h4>
+                    <p class="text-sm text-gray-500">Pahami dasar SQL (PostgreSQL) & NoSQL (MongoDB).</p>
+                </div>
+                <div class="flowchart-arrow hidden md:block">➔</div>
+                 <div class="flowchart-step card text-center w-64">
+                    <div class="text-4xl font-bold text-[#4ECDC4] mb-2">3</div>
+                    <h4 class="font-semibold text-lg">Kuasai Framework</h4>
+                    <p class="text-sm text-gray-500">Pelajari Django (Python) atau Express.js (Node.js).</p>
+                </div>
+                 <div class="flowchart-arrow hidden md:block">➔</div>
+                 <div class="flowchart-step card text-center w-64">
+                    <div class="text-4xl font-bold text-[#556270] mb-2">4</div>
+                    <h4 class="font-semibold text-lg">Bangun API</h4>
+                    <p class="text-sm text-gray-500">Buat proyek API sederhana untuk mempraktikkan semua yang telah dipelajari.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="bg-gray-800 text-white text-center py-6">
+        <p>&copy; 2025 Infografis Roadmap Backend. Disederhanakan untuk pemahaman yang lebih baik.</p>
+    </footer>
+
+    <script>
+        const wrapLabel = (label) => {
+            const maxLen = 16;
+            if (label.length <= maxLen) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + ' ' + word).length > maxLen) {
+                    lines.push(currentLine.trim());
+                    currentLine = word;
+                } else {
+                    currentLine += ' ' + word;
+                }
+            }
+            lines.push(currentLine.trim());
+            return lines;
+        };
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+
+        const energeticPlayfulPalette = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FED766', '#556270'];
+
+        const languagesData = {
+            labels: ['JavaScript (Node.js)', 'Python', 'Java', 'PHP', 'Go', 'C#'].map(wrapLabel),
+            datasets: [{
+                label: 'Popularitas Bahasa',
+                data: [35, 30, 15, 10, 5, 5],
+                backgroundColor: energeticPlayfulPalette,
+                borderColor: '#F0F4F8',
+                borderWidth: 2
+            }]
+        };
+        new Chart(document.getElementById('languagesChart'), {
+            type: 'doughnut',
+            data: languagesData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    },
+                    tooltip: {
+                        callbacks: {
+                           title: tooltipTitleCallback
+                        }
+                    }
+                }
+            }
+        });
+
+        const frameworksData = {
+            labels: ['Express.js (Node)', 'Django (Python)', 'Spring (Java)', 'Nest.js (Node)', 'Flask (Python)'].map(wrapLabel),
+            datasets: [{
+                label: 'Penggunaan Framework',
+                data: [45, 35, 25, 20, 18],
+                backgroundColor: energeticPlayfulPalette[1],
+                borderColor: energeticPlayfulPalette[0],
+                borderWidth: 1,
+                borderRadius: 5
+            }]
+        };
+        new Chart(document.getElementById('frameworksChart'), {
+            type: 'bar',
+            data: frameworksData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
